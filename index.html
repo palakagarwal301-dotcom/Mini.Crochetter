@@ -1,1022 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Mini Crochetter</title>
-  <link rel="stylesheet" href="style.css"> <!-- if you have a CSS file -->
-</head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mini Crochetter — Handmade Crochet Minis with Love</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  .hero {
-  position: relative;
-  width: 100%;
-  height: 100vh; /* full screen height */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #333;
+    }
 
-.hero img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* keeps image proportional */
-}
+    /* Hero Section */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh; /* full screen height */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
 
-.hero-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white; /* or another contrasting color */
-  font-size: 2.5rem;
-  text-align: center;
-  background: rgba(0,0,0,0.4); /* optional semi-transparent background */
-  padding: 1rem 2rem;
-  border-radius: 8px;
-}
-:root {
-  --cream: #fdf6ee;
-  --cream-dark: #f5ead8;
-  --ter: #712b13;
-  --ter-mid: #993c1d;
-  --ter-light: #c4622d;
-  --gold: #ef9f27;
-  --gold-dark: #ba7517;
-  --gold-light: #fac775;
-  --gold-pale: #fdf3d0;
-  --coral: #d85a30;
-  --pink: #d4537e;
-  --teal: #1d9e75;
-  --dark: #2c1a0e;
-  --text: #3d2010;
-  --text-mid: #7a4a2a;
-  --text-light: #b07050;
-  --white: #ffffff;
-  --border: rgba(113,43,19,0.12);
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+    .hero img {
+      width: 50%; /* each image takes half the width */
+      height: 100%;
+      object-fit: cover;
+    }
 
-/* ── NAV ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 5%; height: 68px;
-  background: rgba(253,246,238,0.96); backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.nav-logo-icon {
-  width: 38px; height: 38px; border-radius: 50%;
-  background: var(--ter); display: flex; align-items: center; justify-content: center;
-  font-size: 18px;
-}
-.nav-logo-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 18px; font-weight: 600; color: var(--ter);
-}
-.nav-links { display: flex; gap: 32px; list-style: none; }
-.nav-links a { color: var(--text-mid); text-decoration: none; font-size: 14px; font-weight: 400; transition: color 0.2s; }
-.nav-links a:hover { color: var(--ter); }
-.nav-cta {
-  background: var(--ter); color: var(--white);
-  padding: 10px 22px; border-radius: 24px;
-  font-size: 14px; font-weight: 500; text-decoration: none;
-  transition: all 0.2s;
-}
-.nav-cta:hover { background: var(--ter-mid); transform: translateY(-1px); }
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 2.5rem;
+      text-align: center;
+      background: rgba(0,0,0,0.4); /* semi-transparent background for readability */
+      padding: 1rem 2rem;
+      border-radius: 8px;
+    }
 
-/* ── HERO ── */
-.hero {
-  min-height: 100vh; padding: 100px 5% 80px;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--cream); position: relative; overflow: hidden;
-  text-align: center;
-}
-.hero-bg {
-  position: absolute; inset: 0; overflow: hidden; z-index: 0;
-}
-/* Decorative circles */
-.hero-bg::before {
-  content: ''; position: absolute;
-  width: 600px; height: 600px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(239,159,39,0.12), transparent 70%);
-  top: -100px; right: -100px;
-}
-.hero-bg::after {
-  content: ''; position: absolute;
-  width: 400px; height: 400px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(216,90,48,0.08), transparent 70%);
-  bottom: -80px; left: -80px;
-}
-/* Dot grid texture */
-.hero-dots {
-  position: absolute; inset: 0;
-  background-image: radial-gradient(circle, rgba(113,43,19,0.08) 1px, transparent 1px);
-  background-size: 32px 32px; z-index: 0;
-}
-.hero-content { position: relative; z-index: 1; max-width: 740px; }
-.hero-art {
-  position: absolute; bottom: 18px; z-index: 1; pointer-events: none;
-}
-.hero-art img {
-  display: block; width: 100%; height: auto;
-}
-.hero-art-left {
-  left: 0; width: min(31vw, 360px);
-}
-.hero-art-right {
-  right: 0; width: min(31vw, 350px);
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--gold-pale); border: 1px solid var(--gold-light);
-  color: var(--gold-dark); font-size: 13px; padding: 6px 18px;
-  border-radius: 20px; margin-bottom: 28px; font-weight: 500;
-}
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(48px, 7vw, 88px);
-  font-weight: 700; line-height: 1.05; color: var(--ter);
-  margin-bottom: 8px;
-}
-.hero h1 em { color: var(--gold); font-style: italic; }
-.hero-sub {
-  font-size: 18px; color: var(--text-mid); line-height: 1.75;
-  font-weight: 300; margin: 24px auto 40px; max-width: 540px;
-}
-.hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-.btn-primary {
-  background: var(--ter); color: var(--white);
-  padding: 16px 36px; border-radius: 32px;
-  font-size: 15px; font-weight: 500; text-decoration: none;
-  transition: all 0.25s; box-shadow: 0 4px 20px rgba(113,43,19,0.3);
-}
-.btn-primary:hover { background: var(--ter-mid); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(113,43,19,0.35); }
-.btn-secondary {
-  background: var(--white); color: var(--ter);
-  border: 1.5px solid var(--ter); padding: 16px 36px; border-radius: 32px;
-  font-size: 15px; font-weight: 500; text-decoration: none; transition: all 0.25s;
-}
-.btn-secondary:hover { background: var(--cream-dark); }
+    /* Product Grid */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
 
-/* Floating yarn balls decoration */
-.yarn-float {
-  position: absolute; border-radius: 50%; opacity: 0.7;
-  animation: float 6s ease-in-out infinite;
-}
-.yarn-float:nth-child(1) { width: 80px; height: 80px; background: var(--gold-pale); top: 15%; left: 5%; animation-delay: 0s; }
-.yarn-float:nth-child(2) { width: 56px; height: 56px; background: #faece7; top: 70%; right: 6%; animation-delay: 2s; }
-.yarn-float:nth-child(3) { width: 40px; height: 40px; background: #fbeaf0; top: 30%; right: 10%; animation-delay: 4s; }
-.yarn-float:nth-child(4) { width: 64px; height: 64px; background: #e1f5ee; bottom: 20%; left: 8%; animation-delay: 1s; }
-@keyframes float { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-16px) rotate(5deg)} }
+    .product-card {
+      text-align: center;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      background: #fafafa;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
 
-/* ── SECTIONS ── */
-section { padding: 88px 5%; }
-.section-tag {
-  display: inline-block; font-size: 12px; font-weight: 500;
-  letter-spacing: 0.12em; color: var(--gold-dark);
-  text-transform: uppercase; margin-bottom: 12px;
-}
-.section-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(34px, 4vw, 52px);
-  font-weight: 700; line-height: 1.1; color: var(--ter);
-  margin-bottom: 14px;
-}
-.section-title em { color: var(--gold); font-style: italic; }
-.section-sub { font-size: 17px; color: var(--text-mid); line-height: 1.75; font-weight: 300; max-width: 540px; }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
 
-/* ── PRODUCTS ── */
-#products { background: var(--white); }
-.products-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px; margin-top: 52px;
-}
-.product-card {
-  border-radius: 20px; overflow: hidden;
-  border: 1px solid var(--border); background: var(--cream);
-  transition: all 0.3s; cursor: pointer;
-}
-.product-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(113,43,19,0.14); }
-.product-thumb {
-  height: 220px; display: flex; align-items: center; justify-content: center;
-  font-size: 72px; position: relative; overflow: hidden;
-}
-.product-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.product-thumb.coral-bg { background: #faece7; }
-.product-thumb.amber-bg { background: #faeeda; }
-.product-thumb.pink-bg  { background: #fbeaf0; }
-.product-thumb.teal-bg  { background: #e1f5ee; }
-.product-thumb.purple-bg{ background: #eeedfe; }
-.product-thumb.green-bg { background: #eaf3de; }
-.product-info { padding: 20px; }
-.product-info h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--ter); margin-bottom: 6px; }
-.product-info p { font-size: 14px; color: var(--text-mid); line-height: 1.6; font-weight: 300; }
-.product-meta {
-  display: flex; justify-content: space-between; align-items: center;
-  gap: 12px; margin-top: 14px;
-}
-.product-price {
-  font-size: 18px; font-weight: 600; color: var(--ter);
-}
-.product-price small {
-  display: block; font-size: 11px; font-weight: 400; color: var(--text-light);
-  margin-top: 2px;
-}
-.product-tag {
-  display: inline-block; margin-top: 12px;
-  background: var(--gold-pale); color: var(--gold-dark);
-  font-size: 12px; padding: 4px 12px; border-radius: 12px; font-weight: 500;
-}
-.product-actions {
-  display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap;
-}
-.btn-order, .btn-inquiry {
-  flex: 1 1 140px; text-align: center; text-decoration: none;
-  border-radius: 999px; padding: 12px 14px; font-size: 13px; font-weight: 500;
-  transition: all 0.25s;
-}
-.btn-order {
-  background: var(--ter); color: var(--white);
-  box-shadow: 0 4px 16px rgba(113,43,19,0.2);
-}
-.btn-order:hover { background: var(--ter-mid); transform: translateY(-1px); }
-.btn-inquiry {
-  background: transparent; color: var(--ter); border: 1px solid var(--border);
-}
-.btn-inquiry:hover { background: var(--cream-dark); }
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
 
-/* ── WORKSHOP ── */
-#workshop { background: var(--ter); position: relative; overflow: hidden; }
-#workshop::before {
-  content: ''; position: absolute; inset: 0;
-  background-image: radial-gradient(circle, rgba(239,159,39,0.06) 1px, transparent 1px);
-  background-size: 28px 28px;
-}
-#workshop .section-tag { color: var(--gold-light); }
-#workshop .section-title { color: var(--white); }
-#workshop .section-sub { color: rgba(255,255,255,0.65); }
-.workshop-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 64px; align-items: center; margin-top: 52px;
-  position: relative; z-index: 1;
-}
-.workshop-features { display: flex; flex-direction: column; gap: 20px; }
-.workshop-feature {
-  display: flex; align-items: flex-start; gap: 16px;
-  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 14px; padding: 20px;
-  transition: background 0.2s;
-}
-.workshop-feature:hover { background: rgba(255,255,255,0.1); }
-.feature-icon {
-  width: 48px; height: 48px; border-radius: 10px;
-  background: rgba(239,159,39,0.2); flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center; font-size: 22px;
-}
-.feature-text strong { color: var(--white); display: block; font-size: 16px; margin-bottom: 4px; }
-.feature-text span { color: rgba(255,255,255,0.55); font-size: 14px; font-weight: 300; line-height: 1.55; }
-.workshop-cta-box {
-  background: rgba(255,255,255,0.05); border: 1px solid rgba(239,159,39,0.3);
-  border-radius: 24px; padding: 44px; text-align: center;
-}
-.workshop-cta-box .price-tag {
-  font-family: 'Playfair Display', serif;
-  font-size: 16px; color: rgba(255,255,255,0.6); margin-bottom: 8px;
-}
-.workshop-cta-box .price {
-  font-family: 'Playfair Display', serif;
-  font-size: 56px; font-weight: 700; color: var(--gold);
-  line-height: 1; margin-bottom: 4px;
-}
-.workshop-cta-box .price-sub { font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 28px; }
-.workshop-perks { list-style: none; text-align: left; margin-bottom: 32px; display: flex; flex-direction: column; gap: 12px; }
-.workshop-perks li { color: rgba(255,255,255,0.8); font-size: 15px; display: flex; align-items: center; gap: 10px; }
-.workshop-perks li::before { content: '✓'; color: var(--gold); font-weight: 700; }
-.btn-gold {
-  display: block; background: var(--gold); color: var(--ter);
-  padding: 16px; border-radius: 32px; text-decoration: none;
-  font-size: 16px; font-weight: 600; transition: all 0.25s;
-  box-shadow: 0 4px 20px rgba(239,159,39,0.35);
-}
-.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
-
-/* ── HOW IT WORKS ── */
-#howto { background: var(--cream-dark); }
-.steps-row {
-  display: flex; gap: 0; margin-top: 52px;
-  background: var(--white); border-radius: 20px;
-  overflow: hidden; border: 1px solid var(--border);
-}
-.step-item {
-  flex: 1; padding: 36px 28px; position: relative;
-  border-right: 1px solid var(--border); transition: background 0.2s;
-}
-.step-item:last-child { border-right: none; }
-.step-item:hover { background: var(--cream); }
-.step-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 56px; font-weight: 700; color: rgba(239,159,39,0.2);
-  line-height: 1; margin-bottom: 14px;
-}
-.step-item h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--ter); margin-bottom: 8px; }
-.step-item p { font-size: 14px; color: var(--text-mid); line-height: 1.65; font-weight: 300; }
-
-/* ── ABOUT ── */
-#about { background: var(--white); }
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; margin-top: 52px; }
-.about-visual {
-  background: var(--cream); border-radius: 24px; padding: 48px;
-  position: relative; overflow: hidden; text-align: center;
-}
-.about-visual::before {
-  content: '🧶'; font-size: 160px; opacity: 0.08;
-  position: absolute; top: -20px; right: -20px; line-height: 1;
-}
-.about-avatar {
-  width: 96px; height: 96px; border-radius: 50%;
-  background: var(--ter); margin: 0 auto 20px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 40px;
-}
-.about-visual h3 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--ter); margin-bottom: 8px; }
-.about-visual p { color: var(--text-mid); font-size: 15px; line-height: 1.7; font-weight: 300; }
-.about-stats { display: flex; justify-content: center; gap: 36px; margin-top: 28px; }
-.astat { text-align: center; }
-.astat-n { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--ter); }
-.astat-l { font-size: 12px; color: var(--text-light); margin-top: 2px; }
-.about-text p { font-size: 16px; color: var(--text-mid); line-height: 1.8; margin-bottom: 18px; font-weight: 300; }
-.about-values { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
-.about-value {
-  display: flex; align-items: center; gap: 14px;
-  padding: 14px 18px; background: var(--cream); border-radius: 12px;
-}
-.value-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-.about-value span { font-size: 15px; color: var(--text); font-weight: 400; }
-
-/* ── TESTIMONIALS ── */
-#testimonials { background: var(--cream); }
-.testi-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px; margin-top: 52px;
-}
-.testi-card {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: 20px; padding: 28px; transition: all 0.3s;
-}
-.testi-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(113,43,19,0.1); }
-.testi-stars { color: var(--gold); font-size: 16px; margin-bottom: 14px; }
-.testi-quote { font-size: 15px; color: var(--text-mid); line-height: 1.75; font-style: italic; font-weight: 300; margin-bottom: 20px; }
-.testi-author { display: flex; align-items: center; gap: 12px; }
-.testi-avatar {
-  width: 42px; height: 42px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; flex-shrink: 0;
-}
-.testi-name { font-size: 15px; font-weight: 500; color: var(--ter); }
-.testi-loc { font-size: 13px; color: var(--text-light); }
-
-/* ── CUSTOM ORDER ── */
-#order { background: var(--white); }
-.order-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: start; margin-top: 52px; }
-.order-info-item {
-  display: flex; gap: 14px; align-items: flex-start; margin-bottom: 24px;
-}
-.order-icon {
-  width: 44px; height: 44px; border-radius: 10px;
-  background: var(--gold-pale); display: flex; align-items: center;
-  justify-content: center; font-size: 20px; flex-shrink: 0;
-}
-.order-info-item strong { color: var(--ter); display: block; font-size: 15px; margin-bottom: 4px; }
-.order-info-item span { color: var(--text-mid); font-size: 14px; font-weight: 300; line-height: 1.55; }
-.order-form {
-  background: var(--cream); border: 1px solid var(--border);
-  border-radius: 20px; padding: 36px;
-}
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.form-group { margin-bottom: 18px; }
-.form-group label { display: block; font-size: 12px; font-weight: 500; color: var(--text-mid); margin-bottom: 7px; letter-spacing: 0.05em; text-transform: uppercase; }
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%; background: var(--white);
-  border: 1px solid var(--border); border-radius: 10px;
-  padding: 12px 14px; color: var(--text);
-  font-family: 'Jost', sans-serif; font-size: 15px;
-  transition: border-color 0.2s; outline: none;
-}
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus { border-color: var(--gold); }
-.form-group textarea { resize: vertical; min-height: 110px; }
-.form-group select option { background: var(--white); }
-.form-submit {
-  width: 100%; background: var(--ter); color: var(--white);
-  border: none; border-radius: 32px; padding: 16px;
-  font-family: 'Jost', sans-serif; font-size: 16px; font-weight: 500;
-  cursor: pointer; transition: all 0.25s;
-  box-shadow: 0 4px 20px rgba(113,43,19,0.25);
-}
-.form-submit:hover { background: var(--ter-mid); transform: translateY(-1px); }
-.form-actions {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
-}
-.form-submit.alt-submit {
-  background: var(--white); color: var(--ter); border: 1px solid var(--border);
-  box-shadow: none;
-}
-.form-submit.alt-submit:hover { background: var(--cream-dark); }
-.form-note {
-  margin-top: 12px; font-size: 13px; color: var(--text-light);
-  text-align: center;
-}
-.form-helper {
-  margin-top: -8px; margin-bottom: 16px;
-  font-size: 13px; color: var(--text-light); line-height: 1.5;
-}
-
-/* ── FOOTER ── */
-footer {
-  background: var(--dark); padding: 48px 5% 28px;
-}
-.footer-top {
-  display: flex; justify-content: space-between; align-items: flex-start;
-  gap: 40px; flex-wrap: wrap; padding-bottom: 32px;
-  border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 28px;
-}
-.footer-brand { max-width: 280px; }
-.footer-brand-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px; color: var(--white); margin-bottom: 10px;
-}
-.footer-brand p { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.65; font-weight: 300; }
-.footer-col h4 { font-size: 13px; font-weight: 500; color: var(--gold-light); letter-spacing: 0.08em; margin-bottom: 16px; text-transform: uppercase; }
-.footer-col a { display: block; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 14px; margin-bottom: 10px; transition: color 0.2s; }
-.footer-col a:hover { color: var(--gold-light); }
-.footer-social { display: flex; gap: 12px; margin-top: 8px; }
-.social-btn {
-  width: 38px; height: 38px; border-radius: 8px;
-  background: rgba(255,255,255,0.07); display: flex; align-items: center;
-  justify-content: center; text-decoration: none; font-size: 16px;
-  transition: background 0.2s;
-}
-.social-btn:hover { background: rgba(239,159,39,0.2); }
-.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-.footer-copy { font-size: 13px; color: rgba(255,255,255,0.3); }
-
-/* ── ANIMATIONS ── */
-.fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  .workshop-grid, .about-grid, .order-grid { grid-template-columns: 1fr; }
-  .steps-row { flex-direction: column; }
-  .step-item { border-right: none; border-bottom: 1px solid var(--border); }
-  .step-item:last-child { border-bottom: none; }
-  .hero h1 { font-size: 44px; }
-  .hero-art-left { width: 42vw; left: -10px; bottom: 8px; opacity: 0.95; }
-  .hero-art-right { width: 40vw; right: -8px; bottom: 16px; opacity: 0.95; }
-}
-@media (max-width: 560px) {
-  .hero-content { max-width: 100%; }
-  .hero-art-left { width: 46vw; left: -22px; bottom: 8px; }
-  .hero-art-right { width: 44vw; right: -18px; bottom: 20px; }
-}
-</style>
+    .product-card h3 {
+      margin-top: 10px;
+      font-size: 1.2rem;
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">
-    <div class="nav-logo-icon">🧶</div>
-    <div class="nav-logo-text">Mini Crochetter</div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#products">Shop</a></li>
-    <li><a href="#workshop">Workshop</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#testimonials">Reviews</a></li>
-    <li><a href="#order">Custom Order</a></li>
-  </ul>
-  <a href="#order" class="nav-cta">Order Now</a>
-</nav>
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="hero_left.png" alt="Crochet hero left">
+    <img src="hero_right.png" alt="Crochet hero right">
+    <div class="hero-text">
+      <h1>Mini Crochetter</h1>
+      <p>Handmade crochet with love</p>
+    </div>
+  </section>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-dots"></div>
-  <div class="hero-art hero-art-left">
-    <img src="hero_left.png" alt="Mini Crochetter bouquet art">
-  </div>
-  <div class="hero-art hero-art-right">
-    <img src="hero_right.png" alt="Mini Crochetter floral bouquet art">
-  </div>
-  <div class="yarn-float"></div>
-  <div class="yarn-float"></div>
-  <div class="yarn-float"></div>
-  <div class="yarn-float"></div>
-  <div class="hero-content">
-    <div class="hero-badge">🧶 Custom orders open — DM to order</div>
-    <h1>Crochet Minis<br>Made with <em>Love</em></h1>
-    <p class="hero-sub">Handcrafted crochet pieces — from baby booties to sunflower coasters, plushies to rakhis. Every stitch made with care, just for you.</p>
-    <div class="hero-actions">
-      <a href="#order" class="btn-primary">Place a Custom Order</a>
-      <a href="#products" class="btn-secondary">Browse Bestsellers</a>
+  <!-- Product Grid -->
+  <section class="products">
+    <div class="product-card">
+      <img src="ref_baby_booties.jpg" alt="Crochet baby booties">
+      <h3>Baby Booties</h3>
     </div>
-  </div>
-</section>
+    <div class="product-card">
+      <img src="ref_adorable_plushies.jpg" alt="Crochet plushies">
+      <h3>Adorable Plushies</h3>
+    </div>
+    <div class="product-card">
+      <img src="ref_bags_pouches.jpg" alt="Crochet bags and pouches">
+      <h3>Bags & Pouches</h3>
+    </div>
+    <div class="product-card">
+      <img src="ref_floral_bouquets.jpg" alt="Crochet floral bouquets">
+      <h3>Floral Bouquets</h3>
+    </div>
+    <div class="product-card">
+      <img src="ref_hair_accessories.jpg" alt="Crochet hair accessories">
+      <h3>Hair Accessories</h3>
+    </div>
+    <div class="product-card">
+      <img src="ref_rakhi_minis.jpg" alt="Crochet rakhi and minis">
+      <h3>Rakhi & Minis</h3>
+    </div>
+  </section>
 
-<!-- PRODUCTS -->
-<section id="products">
-  <div class="fade-in">
-    <span class="section-tag">What We Make</span>
-    <h2 class="section-title">Handmade <em>with love</em><br>stitch by stitch</h2>
-    <p class="section-sub">Shop by category, check starting prices, and order instantly on WhatsApp. Every piece is still made to order and fully personal.</p>
-  </div>
-  <div class="products-grid">
-    <div class="product-card fade-in">
-      <div class="product-thumb">
-        <img src="ref_floral_bouquets.jpg" alt="Floral Bouquets">
-      </div>
-      <div class="product-info">
-        <h3>Floral Bouquets</h3>
-        <p>Handcrafted crochet flower bouquets with soft colours, intricate petals, and gift-ready charm.</p>
-        <div class="product-meta">
-          <div class="product-price">From Rs 799<small>depends on size and flowers</small></div>
-          <span class="product-tag">Custom bouquet colours</span>
-        </div>
-        <div class="product-actions">
-          <a class="btn-order" target="_blank" href="https://wa.me/918886122232?text=Hi%20Mini%20Crochetter!%20I%27d%20like%20to%20order%20Floral%20Bouquets.%20Please%20share%20sizes%20and%20pricing.">Order on WhatsApp</a>
-          <a class="btn-inquiry" href="#order">Request custom quote</a>
-        </div>
-      </div>
-    </div>
-    <div class="product-card fade-in">
-      <div class="product-thumb">
-        <img src="ref_baby_booties.jpg" alt="Crochet baby booties">
-      </div>
-      <div class="product-info">
-        <h3>Baby Booties</h3>
-        <p>Soft, cosy crochet booties for little feet, finished with sweet details and made for gifting.</p>
-        <div class="product-meta">
-          <div class="product-price">From Rs 499<small>newborn to toddler sizes</small></div>
-          <span class="product-tag">All sizes available</span>
-        </div>
-        <div class="product-actions">
-          <a class="btn-order" target="_blank" href="https://wa.me/918886122232?text=Hi%20Mini%20Crochetter!%20I%27d%20like%20to%20order%20Baby%20Booties.%20Please%20share%20available%20sizes%20and%20pricing.">Order on WhatsApp</a>
-          <a class="btn-inquiry" href="#order">Request custom quote</a>
-        </div>
-      </div>
-    </div>
-    <div class="product-card fade-in">
-      <div class="product-thumb">
-        <img src="ref_adorable_plushies.jpg" alt="Adorable Plushies">
-      </div>
-      <div class="product-info">
-        <h3>Adorable Plushies</h3>
-        <p>Mini crochet companions with expressive faces, soft textures, and plenty of personality.</p>
-        <div class="product-meta">
-          <div class="product-price">From Rs 599<small>name, colour, and style customisation</small></div>
-          <span class="product-tag">Fully customisable</span>
-        </div>
-        <div class="product-actions">
-          <a class="btn-order" target="_blank" href="https://wa.me/918886122232?text=Hi%20Mini%20Crochetter!%20I%27d%20like%20to%20order%20Adorable%20Plushies.%20Please%20share%20custom%20options%20and%20pricing.">Order on WhatsApp</a>
-          <a class="btn-inquiry" href="#order">Request custom quote</a>
-        </div>
-      </div>
-    </div>
-    <div class="product-card fade-in">
-      <div class="product-thumb">
-        <img src="ref_hair_accessories.jpg" alt="Hair Accessories">
-      </div>
-      <div class="product-info">
-        <h3>Hair Accessories</h3>
-        <p>Crochet clips, bows, and floral pins that add a handmade touch to everyday styling.</p>
-        <div class="product-meta">
-          <div class="product-price">From Rs 199<small>singles and small gift sets</small></div>
-          <span class="product-tag">Gift sets available</span>
-        </div>
-        <div class="product-actions">
-          <a class="btn-order" target="_blank" href="https://wa.me/918886122232?text=Hi%20Mini%20Crochetter!%20I%27d%20like%20to%20order%20Hair%20Accessories.%20Please%20share%20styles%20and%20pricing.">Order on WhatsApp</a>
-          <a class="btn-inquiry" href="#order">Request custom quote</a>
-        </div>
-      </div>
-    </div>
-    <div class="product-card fade-in">
-      <div class="product-thumb">
-        <img src="ref_bags_pouches.jpg" alt="Bags and Pouches">
-      </div>
-      <div class="product-info">
-        <h3>Bags & Pouches</h3>
-        <p>Charming crochet bags and mini pouches that balance playful design with everyday use.</p>
-        <div class="product-meta">
-          <div class="product-price">From Rs 699<small>mini pouches to statement bags</small></div>
-          <span class="product-tag">Custom designs welcome</span>
-        </div>
-        <div class="product-actions">
-          <a class="btn-order" target="_blank" href="https://wa.me/918886122232?text=Hi%20Mini%20Crochetter!%20I%27d%20like%20to%20order%20Bags%20and%20Pouches.%20Please%20share%20available%20designs%20and%20pricing.">Order on WhatsApp</a>
-          <a class="btn-inquiry" href="#order">Request custom quote</a>
-        </div>
-      </div>
-    </div>
-    <div class="product-card fade-in">
-      <div class="product-thumb">
-        <img src=" ref_rakhi_minis.jpg" alt="Rakhi and Minis">
-      </div>
-      <div class="product-info">
-        <h3>Rakhi & Minis</h3>
-        <p>Festive crochet minis and rakhi-inspired keepsakes made for gifting and special occasions.</p>
-        <div class="product-meta">
-          <div class="product-price">From Rs 249<small>seasonal and festive gifting</small></div>
-          <span class="product-tag">Festive favourites</span>
-        </div>
-        <div class="product-actions">
-          <a class="btn-order" target="_blank" href="https://wa.me/918886122232?text=Hi%20Mini%20Crochetter!%20I%27d%20like%20to%20order%20Rakhi%20and%20Minis.%20Please%20share%20designs%20and%20pricing.">Order on WhatsApp</a>
-          <a class="btn-inquiry" href="#order">Request custom quote</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WORKSHOP -->
-<section id="workshop">
-  <div class="fade-in">
-    <span class="section-tag">Learn Crochet</span>
-    <h2 class="section-title">Workshops <em>for everyone</em></h2>
-    <p class="section-sub">From zero to making your first crochet mini — in one session. Small batches, hands-on guidance, all materials included.</p>
-  </div>
-  <div class="workshop-grid">
-    <div class="workshop-features fade-in">
-      <div class="workshop-feature">
-        <div class="feature-icon">🌱</div>
-        <div class="feature-text">
-          <strong>Beginner Friendly</strong>
-          <span>No experience needed — we start from scratch. If you can hold a hook, you can crochet.</span>
-        </div>
-      </div>
-      <div class="workshop-feature">
-        <div class="feature-icon">🎯</div>
-        <div class="feature-text">
-          <strong>Make Something Real</strong>
-          <span>You leave with a finished crochet mini — not just theory. Hands-on from minute one.</span>
-        </div>
-      </div>
-      <div class="workshop-feature">
-        <div class="feature-icon">📦</div>
-        <div class="feature-text">
-          <strong>All Materials Provided</strong>
-          <span>Hook, yarn, patterns — everything is included. Just bring your enthusiasm.</span>
-        </div>
-      </div>
-      <div class="workshop-feature">
-        <div class="feature-icon">👥</div>
-        <div class="feature-text">
-          <strong>Small Batches Only</strong>
-          <span>Limited seats per session so you get personalised attention — not a crowded classroom.</span>
-        </div>
-      </div>
-      <div class="workshop-feature">
-        <div class="feature-icon">🏠</div>
-        <div class="feature-text">
-          <strong>Online & In-Person</strong>
-          <span>Join from anywhere online, or attend in-person sessions. Flexible timing available.</span>
-        </div>
-      </div>
-    </div>
-    <div class="workshop-cta-box fade-in">
-      <p class="price-tag">Workshop fee starting from</p>
-      <div class="price">₹499</div>
-      <p class="price-sub">per person · all materials included</p>
-      <ul class="workshop-perks">
-        <li>2–3 hour hands-on session</li>
-        <li>Complete a mini project by end</li>
-        <li>Hook & yarn kit to take home</li>
-        <li>Pattern sheet for practice</li>
-        <li>WhatsApp support after the session</li>
-      </ul>
-      <a href="https://wa.me/918886122232?text=Hi%20Mini%20Crochetter!%20I%27d%20like%20to%20join%20a%20crochet%20workshop." class="btn-gold" target="_blank">DM to Book Your Spot →</a>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section id="howto">
-  <div class="fade-in" style="text-align:center">
-    <span class="section-tag">Custom Orders</span>
-    <h2 class="section-title">How to <em>Order</em></h2>
-    <p class="section-sub" style="margin:0 auto">Simple, personal, and made just for you.</p>
-  </div>
-  <div class="steps-row fade-in">
-    <div class="step-item">
-      <div class="step-num">01</div>
-      <h3>DM or Message Us</h3>
-      <p>Tell us what you'd like — product, colour, size, occasion. We'll guide you from there.</p>
-    </div>
-    <div class="step-item">
-      <div class="step-num">02</div>
-      <h3>We Confirm & Quote</h3>
-      <p>We confirm the details, share the price, and agree on the delivery timeline.</p>
-    </div>
-    <div class="step-item">
-      <div class="step-num">03</div>
-      <h3>Handmade for You</h3>
-      <p>Your piece is crocheted by hand — stitch by stitch, with care and love.</p>
-    </div>
-    <div class="step-item">
-      <div class="step-num">04</div>
-      <h3>Delivered with Love</h3>
-      <p>Packed beautifully and shipped to your door — or picked up in person.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-grid">
-    <div class="about-visual fade-in">
-      <div class="about-avatar">🧶</div>
-      <h3>Mini Crochetter</h3>
-      <p>Hi! I'm the hands behind every stitch. I started crocheting from scratch — no classes, no formal training, just a YouTube video at 2am and a lot of curiosity.</p>
-      <p>What started as a hobby became a small business built on love, yarn, and the joy of making someone smile with something handmade.</p>
-      <div class="about-stats">
-        <div class="astat"><div class="astat-n">57+</div><div class="astat-l">Posts & products</div></div>
-        <div class="astat"><div class="astat-n">478</div><div class="astat-l">Happy followers</div></div>
-        <div class="astat"><div class="astat-n">100%</div><div class="astat-l">Handmade</div></div>
-      </div>
-    </div>
-    <div class="about-text fade-in">
-      <span class="section-tag">About Me</span>
-      <h2 class="section-title">Every stitch<br>tells a <em>story</em></h2>
-      <p>Mini Crochetter is a one-person handmade studio. Every coaster, bootie, plushie, and flower is crocheted by hand — no machines, no shortcuts.</p>
-      <p>I believe handmade gifts carry something that store-bought things simply can't — time, intention, and a little piece of the maker's heart.</p>
-      <p>Whether you're ordering a gift for someone special, or learning to crochet yourself, I want every experience with Mini Crochetter to feel warm, personal, and memorable.</p>
-      <div class="about-values">
-        <div class="about-value">
-          <div class="value-dot" style="background:var(--coral)"></div>
-          <span>Every piece is made to order — nothing sits on a shelf</span>
-        </div>
-        <div class="about-value">
-          <div class="value-dot" style="background:var(--gold)"></div>
-          <span>Custom colours, sizes, and designs always welcome</span>
-        </div>
-        <div class="about-value">
-          <div class="value-dot" style="background:var(--teal)"></div>
-          <span>Shipped pan-India with love and care packaging</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="fade-in" style="text-align:center">
-    <span class="section-tag">Reviews</span>
-    <h2 class="section-title">Made someone <em>smile</em> today</h2>
-    <p class="section-sub" style="margin:0 auto">What customers say about their handmade pieces.</p>
-  </div>
-  <div class="testi-grid">
-    <div class="testi-card fade-in">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-quote">"Ordered baby booties for my sister's baby shower and they were absolutely gorgeous. The quality is incredible and the packaging was so cute. Everyone at the party was asking where I got them!"</p>
-      <div class="testi-author">
-        <div class="testi-avatar" style="background:#faece7">🌸</div>
-        <div><div class="testi-name">Priya M.</div><div class="testi-loc">Mumbai</div></div>
-      </div>
-    </div>
-    <div class="testi-card fade-in">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-quote">"The sunflower coasters are my absolute favourite home décor piece now. Got a set of 4 in custom colours and they fit perfectly. So much love in each one!"</p>
-      <div class="testi-author">
-        <div class="testi-avatar" style="background:#faeeda">🌻</div>
-        <div><div class="testi-name">Sneha R.</div><div class="testi-loc">Pune</div></div>
-      </div>
-    </div>
-    <div class="testi-card fade-in">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-quote">"Attended the crochet workshop and made my first flower! Never thought I could do it. The instruction was so patient and clear. Already booked the next session."</p>
-      <div class="testi-author">
-        <div class="testi-avatar" style="background:#fbeaf0">💕</div>
-        <div><div class="testi-name">Ananya K.</div><div class="testi-loc">Kolkata</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CUSTOM ORDER -->
-<section id="order">
-  <div class="fade-in">
-    <span class="section-tag">Place an Order</span>
-    <h2 class="section-title">Custom Order<br><em>Request</em></h2>
-    <p class="section-sub">Send it on WhatsApp for the fastest reply, or submit it through the website when the site is live on Netlify.</p>
-  </div>
-  <div class="order-grid">
-    <div class="fade-in">
-      <div class="order-info-item">
-        <div class="order-icon">📱</div>
-        <div><strong>WhatsApp / DM</strong><span>Fastest way to reach us — DM on Instagram @mini.crochetter or WhatsApp us directly at +91 8886122232.</span></div>
-      </div>
-      <div class="order-info-item">
-        <div class="order-icon">📸</div>
-        <div><strong>Instagram</strong><span>@mini.crochetter — follow us for new products, behind the scenes, and crochet tips.</span></div>
-      </div>
-      <div class="order-info-item">
-        <div class="order-icon">✉️</div>
-        <div><strong>Email</strong><span>palakagarwal301@gmail.com — perfect for detailed custom order requests.</span></div>
-      </div>
-      <div class="order-info-item">
-        <div class="order-icon">🚚</div>
-        <div><strong>Delivery</strong><span>Shipped pan-India. Custom packaging available for gifting orders.</span></div>
-      </div>
-      <div class="order-info-item">
-        <div class="order-icon">⏱️</div>
-        <div><strong>Turnaround Time</strong><span>Most orders completed in 5–10 days depending on complexity.</span></div>
-      </div>
-      <div class="order-info-item">
-        <div class="order-icon">💳</div>
-        <div><strong>Payment</strong><span>UPI, bank transfer, or cash on pickup. 50% advance for custom orders.</span></div>
-      </div>
-    </div>
-    <form class="order-form fade-in" name="custom-order" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="custom-order">
-      <input type="hidden" name="bot-field">
-      <div class="form-row">
-        <div class="form-group">
-          <label>Your Name</label>
-          <input id="customer-name" name="customer_name" type="text" placeholder="Full name">
-        </div>
-        <div class="form-group">
-          <label>Phone / WhatsApp</label>
-          <input id="customer-phone" name="customer_phone" type="tel" placeholder="+91 8886122232">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Product You'd Like</label>
-        <select id="product-choice" name="product_choice">
-          <option value="">Select a product</option>
-          <option>Floral Bouquets</option>
-          <option>Baby Booties</option>
-          <option>Adorable Plushies</option>
-          <option>Hair Accessories</option>
-          <option>Bags & Pouches</option>
-          <option>Rakhi & Minis</option>
-          <option>Workshop Booking</option>
-          <option>Something Else / Custom</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Colour Preference</label>
-          <input id="colour-choice" name="colour_choice" type="text" placeholder="e.g. Red & white, pastel pink">
-        </div>
-        <div class="form-group">
-          <label>Occasion</label>
-          <input id="occasion-choice" name="occasion_choice" type="text" placeholder="e.g. Baby shower, birthday">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Quantity</label>
-          <input id="quantity-choice" name="quantity_choice" type="number" min="1" placeholder="e.g. 2">
-        </div>
-        <div class="form-group">
-          <label>Needed By</label>
-          <input id="deadline-choice" name="deadline_choice" type="text" placeholder="e.g. 30 April 2026">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Budget Range</label>
-          <select id="budget-choice" name="budget_choice">
-            <option value="">Select a budget range</option>
-            <option>Under Rs 500</option>
-            <option>Rs 500 - 1,000</option>
-            <option>Rs 1,000 - 2,000</option>
-            <option>Rs 2,000+</option>
-            <option>Flexible / suggest best option</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Delivery City</label>
-          <input id="city-choice" name="city_choice" type="text" placeholder="e.g. Hyderabad">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Reference Photos</label>
-        <input id="reference-choice" name="reference_choice" type="text" placeholder="Paste Instagram post link or describe the photo you will send on WhatsApp">
-      </div>
-      <p class="form-helper">Tip: after WhatsApp opens, you can attach inspiration photos or screenshots directly in the chat.</p>
-      <div class="form-group">
-        <label>Any other details</label>
-        <textarea id="extra-details" name="extra_details" placeholder="Size, quantity, deadline, special requests..."></textarea>
-      </div>
-      <div class="form-actions">
-        <button class="form-submit" type="button" onclick="sendOrderToWhatsApp()">Send on WhatsApp →</button>
-        <button class="form-submit alt-submit" type="submit">Submit on Website</button>
-      </div>
-      <p class="form-note">No payment gateway yet. We confirm every order personally before taking payment. Netlify form submissions will work after deployment.</p>
-    </form>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <div class="footer-brand-name">🧶 Mini Crochetter</div>
-      <p>Handmade crochet minis with love. Custom orders always open. Every stitch made just for you.</p>
-      <div class="footer-social" style="margin-top:16px">
-        <a href="https://www.instagram.com/mini.crochetter/" class="social-btn" target="_blank">📸</a>
-        <a href="https://wa.me/918886122232?text=Hi%20Mini%20Crochetter!%20I%27d%20like%20to%20place%20an%20order." class="social-btn" target="_blank">💬</a>
-        <a href="mailto:palakagarwal301@gmail.com" class="social-btn">✉️</a>
-      </div>
-      <p style="margin-top:14px;"><a href="tel:+918886122232" style="color:rgba(255,255,255,0.68); text-decoration:none;">+91 8886122232</a><br><a href="mailto:palakagarwal301@gmail.com" style="color:rgba(255,255,255,0.68); text-decoration:none;">palakagarwal301@gmail.com</a></p>
-    </div>
-    <div class="footer-col">
-      <h4>Shop</h4>
-      <a href="#products">Baby Booties</a>
-      <a href="#products">Flowers & Coasters</a>
-      <a href="#products">Mini Plushies</a>
-      <a href="#products">Hair Accessories</a>
-      <a href="#products">Bags & Wristlets</a>
-    </div>
-    <div class="footer-col">
-      <h4>Learn</h4>
-      <a href="#workshop">Crochet Workshops</a>
-      <a href="#howto">How to Order</a>
-      <a href="#about">About Mini Crochetter</a>
-      <a href="#testimonials">Customer Reviews</a>
-    </div>
-    <div class="footer-col">
-      <h4>Order</h4>
-      <a href="#order">Custom Order Form</a>
-      <a href="https://www.instagram.com/mini.crochetter/" target="_blank">DM on Instagram</a>
-      <a href="https://wa.me/918886122232?text=Hi%20Mini%20Crochetter!%20I%27d%20like%20to%20place%20an%20order." target="_blank">WhatsApp Us</a>
-      <a href="mailto:palakagarwal301@gmail.com">Email Us</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-copy">© 2025 Mini Crochetter. Handmade with love in India. 🇮🇳</div>
-    <div class="footer-copy">All pieces made to order · Shipping pan-India</div>
-  </div>
-</footer>
-
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 100);
-      }
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-  function sendOrderToWhatsApp() {
-    const name = document.getElementById('customer-name').value.trim();
-    const phone = document.getElementById('customer-phone').value.trim();
-    const product = document.getElementById('product-choice').value.trim();
-    const colour = document.getElementById('colour-choice').value.trim();
-    const occasion = document.getElementById('occasion-choice').value.trim();
-    const quantity = document.getElementById('quantity-choice').value.trim();
-    const deadline = document.getElementById('deadline-choice').value.trim();
-    const budget = document.getElementById('budget-choice').value.trim();
-    const city = document.getElementById('city-choice').value.trim();
-    const reference = document.getElementById('reference-choice').value.trim();
-    const details = document.getElementById('extra-details').value.trim();
-
-    const lines = [
-      'Hi Mini Crochetter! I would like to place an order.',
-      '',
-      `Name: ${name || '-'}`,
-      `Phone/WhatsApp: ${phone || '-'}`,
-      `Product: ${product || '-'}`,
-      `Colour preference: ${colour || '-'}`,
-      `Occasion: ${occasion || '-'}`,
-      `Quantity: ${quantity || '-'}`,
-      `Needed by: ${deadline || '-'}`,
-      `Budget range: ${budget || '-'}`,
-      `Delivery city: ${city || '-'}`,
-      `Reference photos/link: ${reference || '-'}`,
-      `Details: ${details || '-'}`
-    ];
-
-    const url = `https://wa.me/918886122232?text=${encodeURIComponent(lines.join('\n'))}`;
-    window.open(url, '_blank');
-  }
-</script>
 </body>
 </html>
