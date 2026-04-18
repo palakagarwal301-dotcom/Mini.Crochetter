@@ -791,7 +791,7 @@ footer {
   <div class="fade-in">
     <span class="section-tag">Place an Order</span>
     <h2 class="section-title">Custom Order<br><em>Request</em></h2>
-    <p class="section-sub">Send it on WhatsApp for the fastest reply, or submit it through the website when the site is live on Netlify.</p>
+    <p class="section-sub">Send it on WhatsApp for the fastest reply, or fill the form below and we'll get back to you.</p>
   </div>
   <div class="order-grid">
     <div class="fade-in">
@@ -894,10 +894,18 @@ footer {
         <textarea id="extra-details" name="extra_details" placeholder="Size, quantity, deadline, special requests..."></textarea>
       </div>
       <div class="form-actions">
-        <button class="form-submit" type="button" onclick="sendOrderToWhatsApp()">Send on WhatsApp →</button>
+        <button class="form-submit" type="button" function submitViaEmail() {
+  const name = document.querySelector('[name=name]').value;
+  const phone = document.querySelector('[name=phone]').value;
+  const product = document.querySelector('[name=product]').value;
+  const details = document.querySelector('[name=details]').value;
+  const subject = `Custom Order Request from ${name}`;
+  const body = `Name: ${name}\nPhone: ${phone}\nProduct: ${product}\nDetails: ${details}`;
+  window.location.href = `mailto:palakagarwal301@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}>Send on WhatsApp →</button>
         <button class="form-submit alt-submit" type="submit">Submit on Website</button>
       </div>
-      <p class="form-note">No payment gateway yet. We confirm every order personally before taking payment. Netlify form submissions will work after deployment.</p>
+      <p class="form-note">No payment gateway yet. We confirm every order personally before taking payment.</p>
     </form>
   </div>
 </section>
@@ -939,7 +947,7 @@ footer {
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-copy">© 2025 Mini Crochetter. Handmade with love in India. 🇮🇳</div>
+    <div class="footer-copy">© 2026 Mini Crochetter. Handmade with love in India. 🇮🇳</div>
     <div class="footer-copy">All pieces made to order · Shipping pan-India</div>
   </div>
 </footer>
